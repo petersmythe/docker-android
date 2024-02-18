@@ -43,7 +43,7 @@ if [[ "${p}" == "pro"* ]]; then
     TAG_NAME+="${arr[1]}"
 else
     FOLDER_PATH+="docker/${p}"
-    IMAGE_NAME+="budtmo/docker-android"
+    IMAGE_NAME+="petersmythe/docker-android"
     TAG_NAME+="${p}"
 fi
 
