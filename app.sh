@@ -81,7 +81,7 @@ echo "${IMAGE_NAME_SPECIFIC_RELEASE} or ${IMAGE_NAME_LATEST} "
 
 function build() {
     # autopep8 --recursive --exclude=.git,__pycache__,venv --max-line-length=120 --in-place .
-    cmd="docker build -t ${IMAGE_NAME_SPECIFIC_RELEASE} --build-arg DOCKER_ANDROID_VERSION=${r_v} "
+    cmd="docker build --platform linux/arm64 -t ${IMAGE_NAME_SPECIFIC_RELEASE} --build-arg DOCKER_ANDROID_VERSION=${r_v} "
     if [ -n "${a_v}" ]; then
         cmd+="--build-arg EMULATOR_ANDROID_VERSION=${a_v} --build-arg EMULATOR_API_LEVEL=${a_l} "
     fi
@@ -103,7 +103,7 @@ function test() {
 
     mkdir -p tmp
     build
-    docker run -it --rm --name test --entrypoint /bin/bash \
+    docker run --platform linux/arm64 -it --rm --name test --entrypoint /bin/bash \
     -v $PWD/${tmp_folder}:${cli_path}/${tmp_folder} ${IMAGE_NAME_SPECIFIC_RELEASE} \
     -c "cd ${cli_path} && sudo rm -rf ${tmp_folder}/* && \
     nosetests -v && sudo mv .coverage ${tmp_folder} && \

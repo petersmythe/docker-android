@@ -1,4 +1,4 @@
-FROM petersmythe/appium:amd64-v2.5.0-p0
+FROM petersmythe/appium:v2.5.0-p0
 
 LABEL maintainer "Budi Utomo <budtmo.os@gmail.com>"
 
