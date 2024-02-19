@@ -105,4 +105,4 @@ RUN mkdir -p ${LOG_PATH}
 #=========
 STOPSIGNAL SIGTERM
 ENV DEVICE_TYPE=emulator
-ENTRYPOINT ["/home/androidusr/docker-android/mixins/scripts/run.sh"]
+#ENTRYPOINT ["/home/androidusr/docker-android/mixins/scripts/run.sh"]
